@@ -49,4 +49,10 @@ class TariffComparisonTest extends FunSuite {
     }
   }
 
+  test("TariffComparison.annualUsageInKWh(30.00, 0.1367)") {
+    assertResult(2633) {
+      TariffComparison.annualUsageInKWh(30.00, 0.1367)
+    }
+  }
+
 }

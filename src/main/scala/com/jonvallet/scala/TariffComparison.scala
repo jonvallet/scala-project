@@ -23,5 +23,5 @@ object TariffComparison {
     tariffs.map(tariff => cost(powerUsage, gasUsage)(tariff)).sortBy(_._2)
   }
 
-//  def usage
+  def annualUsageInKWh(targetMonthlySpend: BigDecimal, costPerKWh: BigDecimal): Int = (targetMonthlySpend / costPerKWh * 12).toInt
 }
