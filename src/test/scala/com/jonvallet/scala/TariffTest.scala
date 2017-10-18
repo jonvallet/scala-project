@@ -7,7 +7,7 @@ import scala.io.Source
 class TariffTest extends FunSuite {
 
   test("TariffMapper.apply") {
-    val json = "  {\"tariff\": \"better-energy\", \"rates\": {\"power\":  0.1367, \"gas\": 0.0288}, \"standing_charge\": 8.33}"
+    val json = "{\"tariff\": \"better-energy\", \"rates\": {\"power\":  0.1367, \"gas\": 0.0288}, \"standing_charge\": 8.33}"
     val expectedValue = Tariff("better-energy", Rates(Some(0.1367), Some(0.0288)), 8.33)
 
     assertResult(expectedValue) {
