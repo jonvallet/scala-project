@@ -29,8 +29,16 @@ class TariffComparisonTest extends FunSuite {
   }
 
   test("TariffComparison.cost(0, 2300){Tariff(\"better-energy\", Rates(Some(0.1367), Some(0.0288)), 8.33)}") {
-    assertResult("better-energy" -> 87.04) {
+    assertResult("better-energy" -> 78.30) {
       TariffComparison.cost(0, 2300) {
+        Tariff("better-energy", Rates(Some(0.1367), Some(0.0288)), 8.33)
+      }
+    }
+  }
+
+  test("TariffComparison.cost(0, 0){Tariff(\"better-energy\", Rates(Some(0.1367), Some(0.0288)), 8.33)}") {
+    assertResult("better-energy" -> 0) {
+      TariffComparison.cost(0, 0) {
         Tariff("better-energy", Rates(Some(0.1367), Some(0.0288)), 8.33)
       }
     }
