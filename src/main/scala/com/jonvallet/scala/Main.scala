@@ -22,7 +22,22 @@ object Main {
     TariffComparison.costs(powerUsage.toInt, gasUsage.toInt)(tariffs).map(e => s"${e._1} ${e._2}").foreach(println)
   }
 
-  def usage(arg2: String, arg3: String, arg4: String): Unit = ???
+  def usage(tariffName: String, fuelType: String, targetMonthlyCost: String): Unit = {
+    require(tariffs.map(_.tariff).contains(tariffName), s"Tariff $tariffName not valid")
+    require(fuelType.toLowerCase == "gas" | fuelType.toLowerCase == "power", s"Fuel type $fuelType not valid. Valid values are gas or power")
+    val annualUsage = tariffs.find(_.tariff == tariffName) match {
+      case Some(tariff) => {
+        val rate: BigDecimal = fuelType match {
+          case "gas" => tariff.rates.gas.getOrElse(0)
+          case "power" => tariff.rates.power.getOrElse(0)
+          case _ => 0
+        }
+        TariffComparison.annualUsageInKWh(BigDecimal(targetMonthlyCost), rate)
+      }
+      case _ => throw new IllegalArgumentException(s"Tariff $tariffName not valid")
+    }
+    println(annualUsage)
+  }
 
   def main(args: Array[String]): Unit = {
 

@@ -63,4 +63,10 @@ class TariffComparisonTest extends FunSuite {
     }
   }
 
+  test("TariffComparison.annualUsageInKWh(30.00, 0)") {
+    assertThrows[IllegalArgumentException] {
+      TariffComparison.annualUsageInKWh(30.00, 0)
+    }
+  }
+
 }

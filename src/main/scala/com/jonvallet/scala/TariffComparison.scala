@@ -23,5 +23,8 @@ object TariffComparison {
     tariffs.map(tariff => cost(powerUsage, gasUsage)(tariff)).sortBy(_._2)
   }
 
-  def annualUsageInKWh(targetMonthlySpend: BigDecimal, costPerKWh: BigDecimal): Int = (targetMonthlySpend / costPerKWh * 12).toInt
+  def annualUsageInKWh(targetMonthlySpend: BigDecimal, costPerKWh: BigDecimal): Int = {
+    require(costPerKWh > 0, "Cost per kWh cannot be zero")
+    (targetMonthlySpend / costPerKWh * 12).toInt
+  }
 }
