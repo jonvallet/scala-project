@@ -27,7 +27,7 @@ object Main {
     require(fuelType.toLowerCase == "gas" | fuelType.toLowerCase == "power", s"Fuel type $fuelType not valid. Valid values are gas or power")
     val annualUsage = tariffs.find(_.tariff == tariffName) match {
       case Some(tariff) => {
-        val rate: BigDecimal = fuelType match {
+        val rate: BigDecimal = fuelType.toLowerCase match {
           case "gas" => tariff.rates.gas.getOrElse(0)
           case "power" => tariff.rates.power.getOrElse(0)
           case _ => 0
