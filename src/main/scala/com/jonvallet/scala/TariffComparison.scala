@@ -3,14 +3,14 @@ package com.jonvallet.scala
 import scala.math.BigDecimal.RoundingMode
 
 object TariffComparison {
-  def cost(powerUsage: BigDecimal, gasUsage: BigDecimal)(tariff: Tariff): (String, BigDecimal) = {
+  def cost(powerUsageInKWh: Int, gasUsageInKWh: Int)(tariff: Tariff): (String, BigDecimal) = {
     val powerCost: BigDecimal = tariff.rates.power match {
-      case Some(powerTariff) if powerUsage > 0 => powerTariff * powerUsage + tariff.standing_charge
+      case Some(powerTariff) if powerUsageInKWh > 0 => powerTariff * powerUsageInKWh + tariff.standing_charge
       case _ => 0
     }
 
     val gasCost: BigDecimal = tariff.rates.gas match {
-      case Some(gasTariff) if gasUsage > 0 => gasTariff * gasUsage + tariff.standing_charge
+      case Some(gasTariff) if gasUsageInKWh > 0 => gasTariff * gasUsageInKWh + tariff.standing_charge
       case _ => 0
     }
 
@@ -19,8 +19,8 @@ object TariffComparison {
     tariff.tariff -> totalCost.setScale(2, RoundingMode.HALF_EVEN)
   }
 
-  def costs(powerUsage: BigDecimal, gasUsage: BigDecimal)(tariffs: List[Tariff]): List[(String, BigDecimal)] = {
-    tariffs.map(tariff => cost(powerUsage, gasUsage)(tariff)).sortBy(_._2)
+  def costs(powerUsageInKWh: Int, gasUsageInKWh: Int)(tariffs: List[Tariff]): List[(String, BigDecimal)] = {
+    tariffs.map(tariff => cost(powerUsageInKWh, gasUsageInKWh)(tariff)).sortBy(_._2)
   }
 
   def annualUsageInKWh(targetMonthlySpend: BigDecimal, costPerKWh: BigDecimal): Int = {
