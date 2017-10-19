@@ -1,4 +1,4 @@
-name := "ScalaProject"
+name := "Tariff"
 
 version := "0.1"
 
