@@ -8,10 +8,10 @@ object Main {
     "Usage: [options]\n\n" +
     "  cost <POWER_USAGE> <GAS_USAGE>                         for the given annual kWh consumption(s), output an annual cost inclusive of VAT for applicable tariffs, \n" +
     "                                                         sorted by cheapest first. \n" +
-    "                                                         Ex. $ cost 2000 2300 \n" +
+    "                                                         Ex. $./tariff cost 2000 2300 \n" +
     "  usage <TARIFF_NAME> <FUEL_TYPE> <TARGET_MONTHLY_SPEND> for the specified tariff calculate how much energy (in kWh) would be used annually from a monthly spend\n" +
     "                                                         in pounds (inclusive of VAT). Fuel type can be of power or gas.\n" +
-    "                                                         Ex. $ usage greener-energy power 40"
+    "                                                         Ex. $./tariff usage greener-energy power 40"
 
   lazy val tariffs = {
     val json = Source.fromResource("prices.json").mkString
