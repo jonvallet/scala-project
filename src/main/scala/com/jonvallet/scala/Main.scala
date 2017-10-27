@@ -13,7 +13,7 @@ object Main {
     "                                                         in pounds (inclusive of VAT). Fuel type can be of power or gas.\n" +
     "                                                         Ex. $./tariff usage greener-energy power 40"
 
-  lazy val tariffs = {
+  lazy val tariffs: List[Tariff] = {
     val json = Source.fromResource("prices.json").mkString
     TariffMapper.parseJsonArray(json)
   }
@@ -26,14 +26,13 @@ object Main {
     require(tariffs.map(_.tariff).contains(tariffName), s"Tariff $tariffName not valid")
     require(fuelType.toLowerCase == "gas" | fuelType.toLowerCase == "power", s"Fuel type $fuelType not valid. Valid values are gas or power")
     val annualUsage = tariffs.find(_.tariff == tariffName) match {
-      case Some(tariff) => {
+      case Some(tariff) =>
         val rate: BigDecimal = fuelType.toLowerCase match {
           case "gas" => tariff.rates.gas.getOrElse(0)
           case "power" => tariff.rates.power.getOrElse(0)
           case _ => 0
         }
         TariffComparison.annualUsageInKWh(BigDecimal(targetMonthlyCost), rate)
-      }
       case _ => throw new IllegalArgumentException(s"Tariff $tariffName not valid")
     }
     println(annualUsage)
@@ -42,8 +41,8 @@ object Main {
   def main(args: Array[String]): Unit = {
 
     args.toList match {
-      case arg1 :: arg2 :: arg3 :: tail if arg1 == "cost" => cost(arg2, arg3)
-      case arg1 :: arg2 :: arg3 :: arg4 :: tail if arg1 == "usage" => usage(arg2, arg3, arg4)
+      case arg1 :: arg2 :: arg3 :: _ if arg1 == "cost" => cost(arg2, arg3)
+      case arg1 :: arg2 :: arg3 :: arg4 :: _ if arg1 == "usage" => usage(arg2, arg3, arg4)
       case _ => println(HELP)
     }
   }
