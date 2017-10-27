@@ -5,7 +5,7 @@ import org.scalatest.FunSuite
 class TariffComparisonTest extends FunSuite {
 
   test("TariffComparison.cost(2000, 2300){Tariff(\"better-energy\", Rates(Some(0.1367), Some(0.0288)), 8.33)}") {
-    assertResult("better-energy" -> 374.12) {
+    assertResult("better-energy" -> 566.54) {
       TariffComparison.cost(2000, 2300) {
         Tariff("better-energy", Rates(Some(0.1367), Some(0.0288)), 8.33)
       }
