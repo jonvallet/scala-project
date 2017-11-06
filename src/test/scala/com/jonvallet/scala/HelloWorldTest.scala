@@ -1,10 +1,10 @@
 package com.jonvallet.scala
 
-import org.scalatest.FunSuite
+import org.scalatest.{FlatSpec, FunSuite, Matchers}
 
-class HelloWorldTest extends FunSuite {
+class HelloWorldTest extends FlatSpec with Matchers {
 
-  test("Hello World should return `Hello World!`") {
+  "Hello World" should "return `Hello World!`" in {
     assertResult ("Hello World!") {HelloWord()}
   }
 
