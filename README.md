@@ -13,6 +13,7 @@ $ ./sbt test
 
 ## Run ##
 ```sh
+$ cp market.csv target/scala-2.12
 $ cd target/scala-2.12
 $ ./quote
 $ ./quote market.csv 1000
