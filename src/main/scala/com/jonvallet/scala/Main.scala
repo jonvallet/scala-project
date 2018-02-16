@@ -14,7 +14,7 @@ object Main {
   def calculateQuote(file: String, amount: String): Unit = {
 
     val lines = Source.fromFile(file).getLines().toList.tail
-    val loans = lines.map(_.split(",")).map(line => Loan(line(0), BigDecimal(line(1)), BigDecimal(line(2))))
+    val loans = lines.map(_.split(",")).map(line => Loan(line(0), BigDecimal(line(1)), BigDecimal(line(2)), 100000))
     try {
       val loanAmount = BigDecimal(amount)
       val rate = Quote.rate(loans, loanAmount)
