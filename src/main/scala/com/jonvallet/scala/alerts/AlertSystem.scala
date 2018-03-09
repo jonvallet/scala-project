@@ -1,9 +1,6 @@
 package com.jonvallet.scala.alerts
 
-import java.time.LocalDateTime
-
 import spray.json._
-import DefaultJsonProtocol._
 
 import scala.concurrent.duration._ // if you don't supply your own Protocol (see below)
 
@@ -39,5 +36,5 @@ object AlertSystem extends DefaultJsonProtocol {
                                ): Seq[Alert] =
     analyzeMentions(mentions.filter(_.company == company), currentTimeInMillis, duration, threshold)
 
-  def toFormmatedJson(alert: Alert): String = alert.toJson.toString
+  def toJson(alert: Alert): String = alert.toJson.toString
 }

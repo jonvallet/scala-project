@@ -19,7 +19,7 @@ class AlertsTest extends FlatSpec with Matchers {
 
   "An AlertSystem" should "return an alarm" in {
 
-    assertResult(Seq(Alert("EVIL Corp", "Unfair Lending Practices", 525, 0L, 0L))) {
+    assertResult(Seq(Alert("EVIL Corp", "Unfair Lending Practices", 525))) {
       val mentions = List(
         Mention("EVIL Corp", "Unfair Lending Practices", 525),
         Mention("Tyrell Corporation", "Unfair Lending Practices", 25)
@@ -29,7 +29,7 @@ class AlertsTest extends FlatSpec with Matchers {
   }
 
   it should "aggregate mentions per company and topic" in {
-    assertResult(Seq(Alert("EVIL Corp", "Unfair Lending Practices", 725, 0L, 0L))) {
+    assertResult(Seq(Alert("EVIL Corp", "Unfair Lending Practices", 725))) {
       val mentions = List(
         Mention("EVIL Corp", "Unfair Lending Practices", 525),
         Mention("Tyrell Corporation", "Unfair Lending Practices", 25),
@@ -40,7 +40,7 @@ class AlertsTest extends FlatSpec with Matchers {
   }
 
   it should "filter mentions per company if provided" in {
-    assertResult(Seq(Alert("EVIL Corp", "Unfair Lending Practices", 725, 0L, 0L))) {
+    assertResult(Seq(Alert("EVIL Corp", "Unfair Lending Practices", 725))) {
       val mentions = List(
         Mention("EVIL Corp", "Unfair Lending Practices", 525),
         Mention("Tyrell Corporation", "Unfair Lending Practices", 255),
@@ -51,6 +51,6 @@ class AlertsTest extends FlatSpec with Matchers {
   }
 
   it should "print an alert with the duration" in {
-      println (AlertSystem.toFormmatedJson(Alert("EVIL Corp", "Unfair Lending Practices", 525, 1517590000000L, 1517590000030L)))
+      println (AlertSystem.toJson(Alert("EVIL Corp", "Unfair Lending Practices", 525, 1517590000000L, 1517590000030L)))
   }
 }

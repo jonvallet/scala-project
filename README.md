@@ -21,12 +21,12 @@ Or if you want to filter by Company name (there is not need for quotes)
 $ ./alerts EVIL Corp
 ```
 You can paste this sample to test it directly into the consoe
-```
-{"id": 123,"mentions": [{ "company": "EVIL Corp", "topic": "Unfair Lending Practices", "impact": 525 },{ "company": "Tyrell Corporation", "topic": "Unfair Lending Practices", "impact": 25 }]}
-{"id": 123,"mentions": [{ "company": "EVIL Corp", "topic": "Unfair Lending Practices", "impact": 225 },{ "company": "Tyrell Corporation", "topic": "Unfair Lending Practices", "impact": 215 }]}
-{"id": 123,"mentions": [{ "company": "EVIL Corp", "topic": "Unfair Lending Practices", "impact": 25 },{ "company": "Tyrell Corporation", "topic": "Unfair Lending Practices", "impact": 25 }]}
-{"id": 123,"mentions": [{ "company": "Smoke Solutiions", "topic": "Unfair Lending Practices", "impact": 525 },{ "company": "Tyrell Corporation", "topic": "Unfair Lending Practices", "impact": 125 }]}
-{"id": 123,"mentions": [{ "company": "Smoke Solutiions", "topic": "Unfair Lending Practices", "impact": 225 },{ "company": "Tyrell Corporation", "topic": "Unfair Lending Practices", "impact": 25 }]}
-{"id": 123,"mentions": [{ "company": "Smoke Solutiions", "topic": "Unfair Lending Practices", "impact": 25 },{ "company": "Tyrell Corporation", "topic": "Unfair Lending Practices", "impact": 25 }]}
+```javascript
+{"id": 1,"mentions": [{ "company": "EVIL Corp", "topic": "Unfair Lending Practices", "impact": 525 },{ "company": "Tyrell Corporation", "topic": "Unfair Lending Practices", "impact": 25 }]}
+{"id": 2,"mentions": [{ "company": "EVIL Corp", "topic": "Unfair Lending Practices", "impact": 225 },{ "company": "Tyrell Corporation", "topic": "Unfair Lending Practices", "impact": 215 }]}
+{"id": 3,"mentions": [{ "company": "EVIL Corp", "topic": "Unfair Lending Practices", "impact": 25 },{ "company": "Tyrell Corporation", "topic": "Unfair Lending Practices", "impact": 25 }]}
+{"id": 4,"mentions": [{ "company": "Smoke Solutions", "topic": "Unfair Lending Practices", "impact": 525 },{ "company": "Tyrell Corporation", "topic": "Unfair Lending Practices", "impact": 125 }]}
+{"id": 5,"mentions": [{ "company": "Smoke Solutions", "topic": "Unfair Lending Practices", "impact": 225 },{ "company": "Tyrell Corporation", "topic": "Unfair Lending Practices", "impact": 25 }]}
+{"id": 6,"mentions": [{ "company": "Smoke Solutions", "topic": "Unfair Lending Practices", "impact": 25 },{ "company": "Tyrell Corporation", "topic": "Unfair Lending Practices", "impact": 25 }]}
 ```
 And hit enter, the application will issue alerts if found every 30 seconds.

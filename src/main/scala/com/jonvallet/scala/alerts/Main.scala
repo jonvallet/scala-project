@@ -9,7 +9,7 @@ object Main {
 
 
     val filter: Option[String] = args.toList match {
-      case arg1 :: _ => Some(args.mkString(" "))
+      case _ :: _ => Some(args.mkString(" "))
       case _ => None
     }
     println("Write exit to finish")
@@ -36,7 +36,7 @@ object Main {
         case Some(company) => AlertSystem.analyzeMentionsForCompany(mentions, company, System.currentTimeMillis(), seq._1)
         case None => AlertSystem.analyzeMentions(mentions, System.currentTimeMillis(), seq._1)
       }
-      alerts.foreach(alert => println(AlertSystem.toFormmatedJson(alert)))
+      alerts.foreach(alert => println(AlertSystem.toJson(alert)))
     })
   }
 }
